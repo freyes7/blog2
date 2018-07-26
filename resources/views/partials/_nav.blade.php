@@ -18,9 +18,10 @@
       <li class="nav-item">
         <a class="nav-link" href="/about">About</a>
       </li>
+      @if(Auth::check())
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Account
+          Hello {{preg_split("/[\s,]+/", Auth::user()->name)[0]}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{route('posts.index')}}">Posts</a>
@@ -29,9 +30,9 @@
           <a class="dropdown-item" href="auth/logout">Logout</a>
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+      @else
+      <a href="{{route('login')}}" class="btn btn-default">Login</a>
+      @endif
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
