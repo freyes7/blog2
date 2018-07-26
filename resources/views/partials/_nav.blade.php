@@ -26,7 +26,7 @@
           <a class="dropdown-item" href="{{route('posts.index')}}">Posts</a>
           <a class="dropdown-item" href="#">Another action</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Logout</a>
+          <a class="dropdown-item" href="auth/logout">Logout</a>
         </div>
       </li>
       <li class="nav-item">
