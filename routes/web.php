@@ -20,6 +20,11 @@ Route::get('auth/logout','Auth\LoginController@logout');
 Route::get('auth/register','Auth\RegisterController@showRegistrationForm');
 Route::post('auth/register','Auth\RegisterController@register');
 
+//Password Reset Routes
+Route::get('password/reset/{token?}','Auth\ResetPasswordController@showResetForm');
+Route::post('password/email','Auth\ResetPasswordController@resetPassword');
+Route::post('password/reset','Auth\ResetPasswordController@reset');
+
 Route::get('blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@getSingle'])->where('slug','[\w\d\-\_]+');
 Route::get('blog',['uses'=>'BlogController@getIndex','as'=>'blog.index']);
 Route::get('/', 'PagesController@getIndex');
