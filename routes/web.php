@@ -25,6 +25,8 @@ Route::get('password/reset/{token?}','Auth\ResetPasswordController@showResetForm
 Route::post('password/email','Auth\ResetPasswordController@resetPassword');
 Route::post('password/reset','Auth\ResetPasswordController@reset');
 
+Route::resource('categories','CategoryController',['except' =>['create']]);
+
 Route::get('blog/{slug}',['as'=>'blog.single','uses'=>'BlogController@getSingle'])->where('slug','[\w\d\-\_]+');
 Route::get('blog',['uses'=>'BlogController@getIndex','as'=>'blog.index']);
 Route::get('/', 'PagesController@getIndex');
@@ -34,3 +36,6 @@ Route::get('contact', 'PagesController@getContact');
 Route::get('about', 'PagesController@getAbout');
 
 Route::resource('posts','PostController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
